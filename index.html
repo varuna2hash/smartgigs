@@ -1,0 +1,1694 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta name="theme-color" content="#ffffff">
+<meta name="description" content="SmartGigs Sri Lanka — robotics kits, 3D printed components, electronics, embedded systems and custom engineering solutions.">
+<title>SmartGigs | Robotics, 3D Printing & Smart Technology</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+:root {
+    --primary: #2563eb;
+    --primary-dark: #1d4ed8;
+    --ink: #111827;
+    --muted: #64748b;
+    --line: #e8edf4;
+    --surface: #ffffff;
+    --background: #f8fafc;
+    --radius: 22px;
+    --shadow: 0 12px 35px rgba(15, 23, 42, .055);
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 100px;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background: var(--background);
+    color: var(--ink);
+    line-height: 1.65;
+    overflow-x: hidden;
+}
+
+button, a {
+    -webkit-tap-highlight-color: transparent;
+}
+
+button {
+    font: inherit;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+img {
+    display: block;
+    max-width: 100%;
+}
+
+.container {
+    width: min(1160px, calc(100% - 40px));
+    margin: auto;
+}
+
+.muted {
+    color: var(--muted);
+}
+
+.eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--primary);
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 1.7px;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+}
+
+.eyebrow::before {
+    content: "";
+    width: 22px;
+    height: 2px;
+    background: var(--primary);
+}
+
+h1, h2, h3 {
+    letter-spacing: -1px;
+    line-height: 1.2;
+}
+
+h1 {
+    font-size: clamp(38px, 5.8vw, 68px);
+    font-weight: 800;
+}
+
+h2 {
+    font-size: clamp(28px, 4vw, 42px);
+    font-weight: 800;
+}
+
+h3 {
+    font-size: 19px;
+    font-weight: 700;
+}
+
+p {
+    color: var(--muted);
+}
+
+.btn {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    gap: 9px;
+    min-height: 48px;
+    padding: 13px 22px;
+    border-radius: 12px;
+    border: 1px solid transparent;
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: .25s ease;
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+}
+
+.btn-primary {
+    background: var(--primary);
+    color: white;
+    box-shadow: 0 8px 20px #2563eb25;
+}
+
+.btn-primary:hover {
+    background: var(--primary-dark);
+}
+
+.btn-outline {
+    background: white;
+    border-color: #dbe3ee;
+    color: var(--ink);
+}
+
+.btn-outline:hover {
+    border-color: var(--primary);
+    color: var(--primary);
+}
+
+.btn-light {
+    background: white;
+    color: var(--primary);
+}
+
+.btn-whatsapp {
+    background: #eafaf0;
+    color: #15803d;
+}
+
+.btn-whatsapp:hover {
+    background: #dcfce7;
+}
+
+/* Navigation */
+
+.site-header {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background: rgba(255,255,255,.94);
+    backdrop-filter: blur(18px);
+    border-bottom: 1px solid var(--line);
+}
+
+.navbar {
+    min-height: 82px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 24px;
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+}
+
+.brand img {
+    width: 170px;
+    height: auto;
+    max-height: 65px;
+    object-fit: contain;
+}
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 27px;
+}
+
+.nav-links a {
+    color: #475569;
+    font-size: 13px;
+    font-weight: 600;
+    transition: color .2s;
+}
+
+.nav-links a:hover,
+.nav-links a.active-link {
+    color: var(--primary);
+}
+
+.nav-links .nav-cta {
+    padding: 11px 17px;
+    border-radius: 10px;
+    background: var(--primary);
+    color: white;
+}
+
+.menu-toggle {
+    display: none;
+    width: 44px;
+    height: 44px;
+    background: white;
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    cursor: pointer;
+    font-size: 22px;
+}
+
+/* Page navigation */
+
+.page {
+    display: none;
+    animation: pageIn .35s ease;
+}
+
+.page.active {
+    display: block;
+}
+
+@keyframes pageIn {
+    from { opacity: 0; transform: translateY(7px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Hero */
+
+.hero {
+    padding: 92px 0 75px;
+    background:
+        radial-gradient(ellipse at 15% 10%, #dbeafe 0, transparent 40%),
+        radial-gradient(ellipse at 85% 40%, #ede9fe 0, transparent 38%),
+        #fff;
+    border-bottom: 1px solid var(--line);
+}
+
+.hero-layout {
+    display: grid;
+    grid-template-columns: 1.08fr .92fr;
+    gap: 65px;
+    align-items: center;
+}
+
+.hero h1 span {
+    color: var(--primary);
+}
+
+.hero-copy > p {
+    max-width: 540px;
+    margin-top: 23px;
+    font-size: 16px;
+    line-height: 1.9;
+}
+
+.hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 29px;
+}
+
+.hero-note {
+    margin-top: 24px;
+    font-size: 12px;
+    color: #64748b;
+}
+
+.hero-note strong {
+    color: #334155;
+}
+
+.hero-visual {
+    position: relative;
+    min-height: 390px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 25px;
+    border-radius: 30px;
+    background: linear-gradient(145deg, #eff6ff, #f5f3ff);
+    border: 1px solid #ffffff;
+    box-shadow: var(--shadow);
+}
+
+.hero-visual img {
+    width: 100%;
+    max-height: 400px;
+    object-fit: contain;
+    border-radius: 18px;
+}
+
+.floating-label {
+    position: absolute;
+    left: 18px;
+    bottom: 18px;
+    padding: 12px 16px;
+    border-radius: 13px;
+    background: rgba(255,255,255,.96);
+    box-shadow: var(--shadow);
+    font-size: 12px;
+    font-weight: 700;
+}
+
+/* Trust / service strip */
+
+.service-strip {
+    background: white;
+    border-bottom: 1px solid var(--line);
+}
+
+.strip-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+}
+
+.strip-item {
+    padding: 23px 12px;
+    text-align: center;
+    border-right: 1px solid var(--line);
+}
+
+.strip-item:last-child {
+    border-right: 0;
+}
+
+.strip-item strong {
+    display: block;
+    font-size: 13px;
+}
+
+.strip-item span {
+    color: var(--muted);
+    font-size: 11px;
+}
+
+/* General sections */
+
+.section {
+    padding: 84px 0;
+}
+
+.section-heading {
+    max-width: 660px;
+    margin-bottom: 38px;
+}
+
+.section-heading > p {
+    margin-top: 13px;
+    line-height: 1.8;
+}
+
+.heading-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
+    gap: 25px;
+    margin-bottom: 38px;
+}
+
+.heading-row .section-heading {
+    margin-bottom: 0;
+}
+
+/* Cards */
+
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 24px;
+}
+
+.product-card {
+    min-width: 0;
+    overflow: hidden;
+    background: white;
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    transition: transform .25s, box-shadow .25s, border-color .25s;
+}
+
+.product-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow);
+    border-color: #cbdafc;
+}
+
+.product-image {
+    height: 235px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 17px;
+    background: #f1f5f9;
+    overflow: hidden;
+}
+
+.product-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    border-radius: 12px;
+    transition: transform .35s;
+}
+
+.product-card:hover .product-image img {
+    transform: scale(1.035);
+}
+
+.product-content {
+    padding: 22px;
+}
+
+.product-content h3 {
+    margin-bottom: 10px;
+    letter-spacing: -.4px;
+}
+
+.product-content p {
+    min-height: 48px;
+    font-size: 13px;
+    line-height: 1.8;
+}
+
+.product-meta {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    margin: 18px 0;
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--primary);
+}
+
+.product-content .btn {
+    width: 100%;
+}
+
+/* Category cards */
+
+.category-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 18px;
+}
+
+.category-card {
+    padding: 27px 22px;
+    background: white;
+    border: 1px solid var(--line);
+    border-radius: 18px;
+    transition: .25s;
+}
+
+.category-card:hover {
+    border-color: #bfdbfe;
+    box-shadow: var(--shadow);
+    transform: translateY(-4px);
+}
+
+.category-icon {
+    width: 49px;
+    height: 49px;
+    display: grid;
+    place-items: center;
+    margin-bottom: 20px;
+    background: #eff6ff;
+    border-radius: 14px;
+    font-size: 24px;
+}
+
+.category-card h3 {
+    margin-bottom: 10px;
+    font-size: 16px;
+}
+
+.category-card p {
+    font-size: 12px;
+    line-height: 1.8;
+}
+
+.text-link {
+    display: inline-block;
+    margin-top: 17px;
+    color: var(--primary);
+    font-size: 12px;
+    font-weight: 700;
+}
+
+/* Video */
+
+.video-section {
+    background: white;
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+}
+
+.video-layout {
+    display: grid;
+    grid-template-columns: .85fr 1.15fr;
+    gap: 55px;
+    align-items: center;
+}
+
+.video-copy > p {
+    margin-top: 16px;
+    line-height: 1.9;
+}
+
+.video-frame {
+    overflow: hidden;
+    background: #0f172a;
+    border-radius: 22px;
+    box-shadow: var(--shadow);
+    aspect-ratio: 16 / 9;
+}
+
+.video-frame video,
+.video-frame iframe {
+    width: 100%;
+    height: 100%;
+    display: block;
+    border: 0;
+    object-fit: contain;
+}
+
+/* Custom projects banner */
+
+.cta-panel {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 35px;
+    padding: 45px;
+    border-radius: 25px;
+    color: white;
+    background: linear-gradient(125deg, #1d4ed8, #4338ca);
+}
+
+.cta-panel h2 {
+    font-size: clamp(25px, 3vw, 36px);
+}
+
+.cta-panel p {
+    margin-top: 12px;
+    color: #dbeafe;
+    font-size: 14px;
+}
+
+.cta-panel .btn {
+    flex-shrink: 0;
+}
+
+/* Interior pages */
+
+.page-hero {
+    padding: 65px 0 42px;
+    background: linear-gradient(120deg, #eff6ff, #f8fafc 70%);
+    border-bottom: 1px solid var(--line);
+}
+
+.page-hero p {
+    margin-top: 14px;
+    max-width: 650px;
+    line-height: 1.8;
+}
+
+.page-content {
+    padding: 48px 0 85px;
+}
+
+/* Contact */
+
+.contact-section {
+    background: white;
+    border-top: 1px solid var(--line);
+    padding: 70px 0;
+}
+
+.contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 55px;
+}
+
+.contact-copy > p {
+    margin-top: 16px;
+    max-width: 460px;
+    line-height: 1.9;
+}
+
+.contact-list {
+    display: grid;
+    gap: 13px;
+    margin-top: 25px;
+}
+
+.contact-item {
+    display: flex;
+    gap: 14px;
+    align-items: center;
+    padding: 15px;
+    background: var(--background);
+    border: 1px solid var(--line);
+    border-radius: 13px;
+}
+
+.contact-icon {
+    width: 42px;
+    height: 42px;
+    display: grid;
+    place-items: center;
+    background: white;
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    font-size: 19px;
+}
+
+.contact-item strong {
+    display: block;
+    font-size: 13px;
+}
+
+.contact-item span {
+    color: var(--muted);
+    font-size: 12px;
+    overflow-wrap: anywhere;
+}
+
+.contact-cta {
+    padding: 30px;
+    border: 1px solid var(--line);
+    border-radius: 22px;
+    background: #f8fafc;
+}
+
+.contact-cta h3 {
+    margin-bottom: 12px;
+}
+
+.contact-cta p {
+    font-size: 13px;
+    line-height: 1.8;
+}
+
+.contact-cta .btn {
+    width: 100%;
+    margin-top: 15px;
+}
+
+/* Footer */
+
+footer {
+    padding: 34px 0;
+    background: #0f172a;
+    color: white;
+}
+
+.footer-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.footer-brand {
+    font-size: 19px;
+    font-weight: 800;
+}
+
+.footer-brand span {
+    color: #60a5fa;
+}
+
+footer p {
+    margin-top: 6px;
+    font-size: 11px;
+    color: #94a3b8;
+}
+
+.footer-links {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.footer-links a {
+    font-size: 12px;
+    color: #cbd5e1;
+}
+
+.footer-links a:hover {
+    color: white;
+}
+
+/* Floating WhatsApp */
+
+.whatsapp-float {
+    position: fixed;
+    right: 22px;
+    bottom: 22px;
+    z-index: 900;
+    width: 57px;
+    height: 57px;
+    display: grid;
+    place-items: center;
+    border-radius: 50%;
+    background: #25d366;
+    color: white;
+    font-size: 27px;
+    box-shadow: 0 8px 25px #0002;
+    transition: .2s;
+}
+
+.whatsapp-float:hover {
+    transform: translateY(-4px);
+}
+
+/* Accessibility */
+
+a:focus-visible,
+button:focus-visible {
+    outline: 3px solid #93c5fd;
+    outline-offset: 4px;
+}
+
+@media (max-width: 900px) {
+    .nav-links {
+        gap: 15px;
+    }
+
+    .nav-links a {
+        font-size: 12px;
+    }
+
+    .hero-layout {
+        gap: 30px;
+    }
+
+    .hero-visual {
+        min-height: 310px;
+    }
+
+    .product-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .category-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 680px) {
+    .container {
+        width: calc(100% - 32px);
+    }
+
+    .navbar {
+        min-height: 72px;
+    }
+
+    .brand img {
+        width: 140px;
+        max-height: 54px;
+    }
+
+    .menu-toggle {
+        display: block;
+    }
+
+    .nav-links {
+        display: none;
+        position: absolute;
+        top: 71px;
+        left: 0;
+        right: 0;
+        padding: 15px 20px 22px;
+        background: white;
+        border-bottom: 1px solid var(--line);
+        box-shadow: 0 15px 25px #00000008;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0;
+    }
+
+    .nav-links.open {
+        display: flex;
+    }
+
+    .nav-links a {
+        padding: 13px 8px;
+        font-size: 14px;
+    }
+
+    .nav-links .nav-cta {
+        text-align: center;
+        margin-top: 8px;
+    }
+
+    .hero {
+        padding: 58px 0 45px;
+    }
+
+    .hero-layout {
+        grid-template-columns: 1fr;
+        gap: 35px;
+    }
+
+    .hero-copy > p {
+        font-size: 14px;
+    }
+
+    .hero-visual {
+        min-height: 280px;
+    }
+
+    .strip-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .strip-item {
+        border-bottom: 1px solid var(--line);
+    }
+
+    .strip-item:nth-child(2) {
+        border-right: 0;
+    }
+
+    .section {
+        padding: 60px 0;
+    }
+
+    .heading-row {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .product-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .product-image {
+        height: 250px;
+    }
+
+    .category-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 12px;
+    }
+
+    .category-card {
+        padding: 20px 15px;
+    }
+
+    .video-layout {
+        grid-template-columns: 1fr;
+        gap: 28px;
+    }
+
+    .cta-panel {
+        padding: 30px 23px;
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .contact-grid {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+
+    .footer-row {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .whatsapp-float {
+        width: 52px;
+        height: 52px;
+        right: 15px;
+        bottom: 15px;
+    }
+}
+
+@media (max-width: 360px) {
+    .category-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .hero-actions {
+        flex-direction: column;
+    }
+
+    .hero-actions .btn {
+        width: 100%;
+        margin: 0;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        scroll-behavior: auto !important;
+        animation-duration: .01ms !important;
+        transition-duration: .01ms !important;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header class="site-header">
+    <div class="container navbar">
+        <a class="brand" href="#home" aria-label="SmartGigs home"
+           onclick="show('home'); return false;">
+            <img src="logo.jpg" alt="SmartGigs logo">
+        </a>
+
+        <button class="menu-toggle" id="menuToggle"
+                aria-label="Open navigation menu"
+                aria-expanded="false"
+                aria-controls="navLinks"
+                onclick="toggleMenu()">☰</button>
+
+        <nav class="nav-links" id="navLinks" aria-label="Main navigation">
+            <a href="#home" data-page="home" onclick="show('home'); return false;">Home</a>
+            <a href="#robotics" data-page="robotics" onclick="show('robotics'); return false;">Robotics Kits</a>
+            <a href="#printing" data-page="printing" onclick="show('printing'); return false;">3D Printing</a>
+            <a href="#electronics" data-page="electronics" onclick="show('electronics'); return false;">Electronics</a>
+            <a href="#custom" data-page="custom" onclick="show('custom'); return false;">Custom Projects</a>
+            <a href="#contact" class="nav-cta" onclick="show('contact'); return false;">Contact Us</a>
+        </nav>
+    </div>
+</header>
+
+<main>
+
+<!-- HOME PAGE -->
+<div class="page active" id="home">
+
+    <section class="hero">
+        <div class="container hero-layout">
+
+            <div class="hero-copy">
+                <span class="eyebrow">Engineering meets imagination</span>
+
+                <h1>Build smarter.<br>Make it <span>real.</span></h1>
+
+                <p>
+                    Discover robotics kits, precision 3D printing,
+                    electronics and custom engineering solutions.
+                    From your first robot to your next big idea,
+                    SmartGigs helps you bring technology to life.
+                </p>
+
+                <div class="hero-actions">
+                    <button class="btn btn-primary" onclick="show('robotics')">
+                        Explore Products →
+                    </button>
+
+                    <button class="btn btn-outline" onclick="show('custom')">
+                        Start a Custom Project
+                    </button>
+                </div>
+
+                <div class="hero-note">
+                    <strong>Robotics · 3D Printing · Electronics</strong><br>
+                    Practical technology for makers, students and innovators.
+                </div>
+            </div>
+
+            <div class="hero-visual">
+                <img src="1.jpg"
+                     alt="SmartGigs robotics kit"
+                     onerror="this.style.display='none'">
+                <div class="floating-label">🤖 Turn ideas into working projects</div>
+            </div>
+
+        </div>
+    </section>
+
+    <section class="service-strip">
+        <div class="container strip-grid">
+            <div class="strip-item">
+                <strong>🤖 Robotics</strong>
+                <span>Learn, build and experiment</span>
+            </div>
+            <div class="strip-item">
+                <strong>🧩 3D Printing</strong>
+                <span>Parts made for your needs</span>
+            </div>
+            <div class="strip-item">
+                <strong>⚡ Electronics</strong>
+                <span>Modules and components</span>
+            </div>
+            <div class="strip-item">
+                <strong>🛠 Custom Design</strong>
+                <span>Solutions built around you</span>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+
+            <div class="section-heading">
+                <span class="eyebrow">Explore SmartGigs</span>
+                <h2>Technology for curious minds.</h2>
+                <p>
+                    Find the right tools and components to learn new skills,
+                    build prototypes and create practical engineering projects.
+                </p>
+            </div>
+
+            <div class="category-grid">
+
+                <a href="#robotics" class="category-card"
+                   onclick="show('robotics'); return false;">
+                    <div class="category-icon">🤖</div>
+                    <h3>Robotics Kits</h3>
+                    <p>Hands-on robot building, motors, sensors and control systems.</p>
+                    <span class="text-link">Explore robotics →</span>
+                </a>
+
+                <a href="#printing" class="category-card"
+                   onclick="show('printing'); return false;">
+                    <div class="category-icon">🧩</div>
+                    <h3>3D Printed Parts</h3>
+                    <p>Custom enclosures, robot frames, brackets and functional parts.</p>
+                    <span class="text-link">Explore 3D printing →</span>
+                </a>
+
+                <a href="#electronics" class="category-card"
+                   onclick="show('electronics'); return false;">
+                    <div class="category-icon">⚡</div>
+                    <h3>Electronics</h3>
+                    <p>Electronic modules, sensors and embedded system components.</p>
+                    <span class="text-link">Explore electronics →</span>
+                </a>
+
+                <a href="#custom" class="category-card"
+                   onclick="show('custom'); return false;">
+                    <div class="category-icon">🛠</div>
+                    <h3>Custom Projects</h3>
+                    <p>Get help with product design, prototyping and embedded systems.</p>
+                    <span class="text-link">Discuss your idea →</span>
+                </a>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ROBOT VIDEO -->
+    <section class="section video-section">
+        <div class="container video-layout">
+
+            <div class="video-copy">
+                <span class="eyebrow">See it in action</span>
+                <h2>From code to motion.</h2>
+                <p>
+                    Explore a Bluetooth-controlled robot and discover
+                    how electronics, programming and mechanical design
+                    work together in a real project.
+                </p>
+                <div class="hero-actions">
+                    <button class="btn btn-primary"
+                            onclick="show('robotics')">
+                        Explore Robot Kits →
+                    </button>
+                </div>
+            </div>
+
+            <div class="video-frame">
+                <video controls preload="metadata" playsinline
+                       poster="3.jpg">
+                    <source src="vid1.mp4" type="video/mp4">
+                    Your browser does not support HTML video.
+                </video>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- FEATURED PRODUCTS -->
+    <section class="section">
+        <div class="container">
+
+            <div class="heading-row">
+                <div class="section-heading">
+                    <span class="eyebrow">Featured collection</span>
+                    <h2>Start building today.</h2>
+                    <p>Explore our featured projects and ask us about availability.</p>
+                </div>
+
+                <button class="btn btn-outline"
+                        onclick="show('robotics')">
+                    View all products →
+                </button>
+            </div>
+
+            <div class="product-grid">
+
+                <article class="product-card">
+                    <div class="product-image">
+                        <img src="1.jpg" alt="Bluetooth controlled robot kit"
+                             loading="lazy">
+                    </div>
+                    <div class="product-content">
+                        <h3>Bluetooth Robot Kit</h3>
+                        <p>A hands-on mobile robotics project for learning motor control and electronics.</p>
+                        <div class="product-meta">
+                            <span>ROBOTICS</span>
+                            <span>Ask for price</span>
+                        </div>
+                        <button class="btn btn-primary"
+                                onclick="orderProduct('Bluetooth Robot Kit')">
+                            Enquire on WhatsApp
+                        </button>
+                    </div>
+                </article>
+
+                <article class="product-card">
+                    <div class="product-image">
+                        <img src="2.jpg" alt="Custom 3D printed robot frame"
+                             loading="lazy">
+                    </div>
+                    <div class="product-content">
+                        <h3>3D Printed Components</h3>
+                        <p>Custom parts for robotics, electronics enclosures and engineering prototypes.</p>
+                        <div class="product-meta">
+                            <span>3D PRINTING</span>
+                            <span>Quote on request</span>
+                        </div>
+                        <button class="btn btn-primary"
+                                onclick="orderProduct('Custom 3D Printed Components')">
+                            Request a Quote
+                        </button>
+                    </div>
+                </article>
+
+                <article class="product-card">
+                    <div class="product-image">
+                        <img src="12.jpg" alt="Electronics sensor kit"
+                             loading="lazy">
+                    </div>
+                    <div class="product-content">
+                        <h3>Electronics & Sensor Kit</h3>
+                        <p>Explore sensors, modules and components for your next embedded project.</p>
+                        <div class="product-meta">
+                            <span>ELECTRONICS</span>
+                            <span>Ask for price</span>
+                        </div>
+                        <button class="btn btn-primary"
+                                onclick="orderProduct('Electronics and Sensor Kit')">
+                            Enquire on WhatsApp
+                        </button>
+                    </div>
+                </article>
+
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <div class="cta-panel">
+                <div>
+                    <h2>Have an idea? Let's engineer it.</h2>
+                    <p>Tell us what you want to build. We'll discuss the next steps with you.</p>
+                </div>
+                <button class="btn btn-light" onclick="show('custom')">
+                    Discuss Your Project →
+                </button>
+            </div>
+        </div>
+    </section>
+
+</div>
+
+<!-- ROBOTICS PAGE -->
+<section class="page" id="robotics">
+    <div class="page-hero">
+        <div class="container">
+            <span class="eyebrow">Build and learn</span>
+            <h1>Robotics Kits</h1>
+            <p>
+                Explore practical robotics projects, motor-control systems
+                and hands-on electronics for learners, makers and innovators.
+            </p>
+        </div>
+    </div>
+
+    <div class="container page-content">
+        <div class="product-grid">
+
+            <article class="product-card">
+                <div class="product-image">
+                    <img src="1.jpg" alt="Bluetooth controlled robot" loading="lazy">
+                </div>
+                <div class="product-content">
+                    <h3>Bluetooth Controlled Robot</h3>
+                    <p>A mobile robot project controlled through a compatible smartphone.</p>
+                    <div class="product-meta">
+                        <span>ROBOTICS KIT</span>
+                        <span>Price on request</span>
+                    </div>
+                    <button class="btn btn-primary"
+                            onclick="orderProduct('Bluetooth Controlled Robot')">
+                        Order / Enquire
+                    </button>
+                </div>
+            </article>
+
+            <article class="product-card">
+                <div class="product-image">
+                    <img src="3.jpg" alt="Robotics project" loading="lazy">
+                </div>
+                <div class="product-content">
+                    <h3>Robotics Project Kit</h3>
+                    <p>Ask us about this project, its components and assembly options.</p>
+                    <div class="product-meta">
+                        <span>ROBOTICS KIT</span>
+                        <span>Price on request</span>
+                    </div>
+                    <button class="btn btn-primary"
+                            onclick="orderProduct('Robotics Project Kit')">
+                        Order / Enquire
+                    </button>
+                </div>
+            </article>
+
+            <article class="product-card">
+                <div class="product-image">
+                    <img src="11.jpg" alt="Robotics build" loading="lazy">
+                </div>
+                <div class="product-content">
+                    <h3>Custom Robotics Build</h3>
+                    <p>Discuss a suitable robot configuration for your project or learning needs.</p>
+                    <div class="product-meta">
+                        <span>CUSTOM BUILD</span>
+                        <span>Quote on request</span>
+                    </div>
+                    <button class="btn btn-primary"
+                            onclick="orderProduct('Custom Robotics Build')">
+                        Request a Quote
+                    </button>
+                </div>
+            </article>
+
+        </div>
+    </div>
+</section>
+
+<!-- 3D PRINTING PAGE -->
+<section class="page" id="printing">
+    <div class="page-hero">
+        <div class="container">
+            <span class="eyebrow">Designed for your application</span>
+            <h1>3D Printing</h1>
+            <p>
+                Turn digital designs into physical parts for robotics,
+                electronics, product development and practical engineering.
+            </p>
+        </div>
+    </div>
+
+    <div class="container page-content">
+        <div class="product-grid">
+
+            <article class="product-card">
+                <div class="product-image">
+                    <img src="2.jpg" alt="3D printed robot frame" loading="lazy">
+                </div>
+                <div class="product-content">
+                    <h3>Robot Frames & Chassis</h3>
+                    <p>Custom-designed frames, mounting plates and mechanical parts.</p>
+                    <div class="product-meta">
+                        <span>3D PRINTING</span>
+                        <span>Quote on request</span>
+                    </div>
+                    <button class="btn btn-primary"
+                            onclick="orderProduct('3D Printed Robot Frame or Chassis')">
+                        Request a Quote
+                    </button>
+                </div>
+            </article>
+
+            <article class="product-card">
+                <div class="product-image">
+                    <img src="9.jpg" alt="Custom 3D printed product" loading="lazy">
+                </div>
+                <div class="product-content">
+                    <h3>Custom Printed Parts</h3>
+                    <p>Brackets, covers, enclosures and replacement parts made to suit your requirements.</p>
+                    <div class="product-meta">
+                        <span>CUSTOM PARTS</span>
+                        <span>Quote on request</span>
+                    </div>
+                    <button class="btn btn-primary"
+                            onclick="orderProduct('Custom 3D Printed Parts')">
+                        Request a Quote
+                    </button>
+                </div>
+            </article>
+
+            <article class="product-card">
+                <div class="product-image">
+                    <img src="11.jpg" alt="Custom engineering prototype" loading="lazy">
+                </div>
+                <div class="product-content">
+                    <h3>Prototype Development</h3>
+                    <p>Discuss your concept, dimensions, design file and intended application.</p>
+                    <div class="product-meta">
+                        <span>PROTOTYPING</span>
+                        <span>Quote on request</span>
+                    </div>
+                    <button class="btn btn-primary"
+                            onclick="orderProduct('3D Printed Engineering Prototype')">
+                        Discuss Your Design
+                    </button>
+                </div>
+            </article>
+
+        </div>
+    </div>
+</section>
+
+<!-- ELECTRONICS PAGE -->
+<section class="page" id="electronics">
+    <div class="page-hero">
+        <div class="container">
+            <span class="eyebrow">Power your next project</span>
+            <h1>Electronics</h1>
+            <p>
+                Find components and modules for embedded systems,
+                sensor-based projects, automation and robotics.
+            </p>
+        </div>
+    </div>
+
+    <div class="container page-content">
+        <div class="product-grid">
+
+            <article class="product-card">
+                <div class="product-image">
+                    <img src="12.jpg" alt="Electronics sensor kit" loading="lazy">
+                </div>
+                <div class="product-content">
+                    <h3>Sensor Kit</h3>
+                    <p>Ask about sensor modules for distance detection, motion and environmental measurements.</p>
+                    <div class="product-meta">
+                        <span>SENSORS</span>
+                        <span>Price on request</span>
+                    </div>
+                    <button class="btn btn-primary"
+                            onclick="orderProduct('Electronics Sensor Kit')">
+                        Order / Enquire
+                    </button>
+                </div>
+            </article>
+
+            <article class="product-card">
+                <div class="product-image">
+                    <img src="4.jpg" alt="Electronics project components" loading="lazy">
+                </div>
+                <div class="product-content">
+                    <h3>Electronics Components</h3>
+                    <p>Ask about available modules, motor drivers, controllers and project components.</p>
+                    <div class="product-meta">
+                        <span>COMPONENTS</span>
+                        <span>Price on request</span>
+                    </div>
+                    <button class="btn btn-primary"
+                            onclick="orderProduct('Electronics Components')">
+                        Check Availability
+                    </button>
+                </div>
+            </article>
+
+            <article class="product-card">
+                <div class="product-image">
+                    <img src="9.jpg" alt="Embedded electronics project" loading="lazy">
+                </div>
+                <div class="product-content">
+                    <h3>Embedded System Solutions</h3>
+                    <p>Discuss controller programming, hardware integration and custom electronics projects.</p>
+                    <div class="product-meta">
+                        <span>ENGINEERING</span>
+                        <span>Quote on request</span>
+                    </div>
+                    <button class="btn btn-primary"
+                            onclick="orderProduct('Custom Embedded System Solution')">
+                        Discuss Your Project
+                    </button>
+                </div>
+            </article>
+
+        </div>
+    </div>
+</section>
+
+<!-- CUSTOM PROJECTS PAGE -->
+<section class="page" id="custom">
+    <div class="page-hero">
+        <div class="container">
+            <span class="eyebrow">Your concept, engineered</span>
+            <h1>Custom Projects</h1>
+            <p>
+                Have a product idea, a robotics challenge or a design that
+                needs to become a working prototype? Let's discuss it.
+            </p>
+        </div>
+    </div>
+
+    <section class="section">
+        <div class="container">
+
+            <div class="category-grid">
+                <div class="category-card">
+                    <div class="category-icon">🧠</div>
+                    <h3>Robotics & Automation</h3>
+                    <p>Robot control, sensors, motor systems and automation prototypes.</p>
+                </div>
+
+                <div class="category-card">
+                    <div class="category-icon">💻</div>
+                    <h3>Embedded Systems</h3>
+                    <p>Microcontroller programming, electronics integration and IoT projects.</p>
+                </div>
+
+                <div class="category-card">
+                    <div class="category-icon">📐</div>
+                    <h3>3D Design & Printing</h3>
+                    <p>Custom CAD models, enclosures, mechanical parts and prototypes.</p>
+                </div>
+
+                <div class="category-card">
+                    <div class="category-icon">⚙️</div>
+                    <h3>Product Development</h3>
+                    <p>Discuss your requirements and explore practical engineering options.</p>
+                </div>
+            </div>
+
+            <div style="height:35px"></div>
+
+            <div class="cta-panel">
+                <div>
+                    <h2>Let's build something useful.</h2>
+                    <p>Contact us with your idea, requirements, reference images or design files.</p>
+                </div>
+
+                <button class="btn btn-light"
+                        onclick="contactCustomProject()">
+                    Send Your Project Details →
+                </button>
+            </div>
+
+        </div>
+    </section>
+</section>
+
+<!-- CONTACT PAGE -->
+<section class="page" id="contact">
+    <div class="page-hero">
+        <div class="container">
+            <span class="eyebrow">We are here to help</span>
+            <h1>Contact SmartGigs</h1>
+            <p>Ask about products, request a quote or discuss your next engineering project.</p>
+        </div>
+    </div>
+
+    <section class="contact-section">
+        <div class="container contact-grid">
+
+            <div class="contact-copy">
+                <h2>Let's talk technology.</h2>
+                <p>
+                    Send us your enquiry. Include the product name,
+                    quantity and any important specifications so we can
+                    better understand your requirements.
+                </p>
+
+                <div class="contact-list">
+
+                    <a class="contact-item" href="https://wa.me/94718770303"
+                       target="_blank" rel="noopener noreferrer">
+                        <div class="contact-icon">💬</div>
+                        <div>
+                            <strong>WhatsApp</strong>
+                            <span>+94 71 877 0303</span>
+                        </div>
+                    </a>
+
+                    <a class="contact-item" href="tel:+94773974320">
+                        <div class="contact-icon">📞</div>
+                        <div>
+                            <strong>Telephone</strong>
+                            <span>+94 77 397 4320</span>
+                        </div>
+                    </a>
+
+                    <a class="contact-item" href="mailto:varuna2@gmail.com">
+                        <div class="contact-icon">✉️</div>
+                        <div>
+                            <strong>Email</strong>
+                            <span>varuna2@gmail.com</span>
+                        </div>
+                    </a>
+
+                </div>
+            </div>
+
+            <div class="contact-cta">
+                <h3>Request a quotation</h3>
+                <p>
+                    Looking for a robotics kit, a printed component or a
+                    custom engineering solution? Send your requirements
+                    directly to our WhatsApp.
+                </p>
+
+                <button class="btn btn-primary"
+                        onclick="contactCustomProject()">
+                    Send an Enquiry →
+                </button>
+
+                <p style="margin-top:20px">
+                    For 3D printing, include your STL/3MF file if available,
+                    approximate dimensions, material preference and quantity.
+                </p>
+            </div>
+
+        </div>
+    </section>
+</section>
+
+</main>
+
+<footer>
+    <div class="container footer-row">
+        <div>
+            <div class="footer-brand">Smart<span>Gigs</span></div>
+            <p>Robotics · 3D Printing · Electronics · Custom Engineering</p>
+            <p>© <span id="year"></span> SmartGigs. All rights reserved.</p>
+        </div>
+
+        <div class="footer-links">
+            <a href="#home" onclick="show('home'); return false;">Home</a>
+            <a href="#robotics" onclick="show('robotics'); return false;">Robotics</a>
+            <a href="#printing" onclick="show('printing'); return false;">3D Printing</a>
+            <a href="#custom" onclick="show('custom'); return false;">Custom Projects</a>
+            <a href="#contact" onclick="show('contact'); return false;">Contact</a>
+        </div>
+    </div>
+</footer>
+
+<a class="whatsapp-float"
+   href="https://wa.me/94718770303"
+   target="_blank"
+   rel="noopener noreferrer"
+   aria-label="Contact SmartGigs on WhatsApp"
+   title="Chat with SmartGigs">☏</a>
+
+<script>
+const WHATSAPP_NUMBER = "94718770303";
+
+function show(page, updateHistory = true) {
+    const target = document.getElementById(page);
+
+    if (!target || !target.classList.contains("page")) {
+        page = "home";
+    }
+
+    document.querySelectorAll(".page").forEach(section => {
+        section.classList.remove("active");
+    });
+
+    document.getElementById(page).classList.add("active");
+
+    document.querySelectorAll("[data-page]").forEach(link => {
+        if (link.dataset.page === page) {
+            link.classList.add("active-link");
+            link.setAttribute("aria-current", "page");
+        } else {
+            link.classList.remove("active-link");
+            link.removeAttribute("aria-current");
+        }
+    });
+
+    closeMenu();
+
+    if (updateHistory) {
+        history.pushState({ page: page }, "", "#" + page);
+    }
+
+    window.scrollTo({ top: 0, behavior: "smooth" });
+}
+
+function toggleMenu() {
+    const menu = document.getElementById("navLinks");
+    const button = document.getElementById("menuToggle");
+    const isOpen = menu.classList.toggle("open");
+
+    button.setAttribute("aria-expanded", String(isOpen));
+    button.setAttribute(
+        "aria-label",
+        isOpen ? "Close navigation menu" : "Open navigation menu"
+    );
+    button.textContent = isOpen ? "✕" : "☰";
+}
+
+function closeMenu() {
+    const menu = document.getElementById("navLinks");
+    const button = document.getElementById("menuToggle");
+
+    menu.classList.remove("open");
+    button.setAttribute("aria-expanded", "false");
+    button.setAttribute("aria-label", "Open navigation menu");
+    button.textContent = "☰";
+}
+
+function orderProduct(productName) {
+    const message =
+        "Hello SmartGigs! I am interested in: " + productName +
+        ". Please send me the price, availability and more details.";
+
+    const url =
+        "https://wa.me/" + WHATSAPP_NUMBER +
+        "?text=" + encodeURIComponent(message);
+
+    window.open(url, "_blank", "noopener,noreferrer");
+}
+
+function contactCustomProject() {
+    const message =
+        "Hello SmartGigs! I would like to discuss a custom project. " +
+        "Please let me know what details you need.";
+
+    const url =
+        "https://wa.me/" + WHATSAPP_NUMBER +
+        "?text=" + encodeURIComponent(message);
+
+    window.open(url, "_blank", "noopener,noreferrer");
+}
+
+window.addEventListener("popstate", function() {
+    const page = window.location.hash.replace("#", "") || "home";
+    show(page, false);
+});
+
+document.getElementById("year").textContent =
+    new Date().getFullYear();
+
+// Open the correct section when a visitor loads a direct page link.
+const initialPage = window.location.hash.replace("#", "");
+if (initialPage && document.getElementById(initialPage)?.classList.contains("page")) {
+    show(initialPage, false);
+} else {
+    show("home", false);
+}
+</script>
+
+</body>
+</html>
+```
